@@ -24,7 +24,7 @@ const handleLogout = () => {
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
         <li class="nav-item" v-else>
-          <button class="btn btn-outline-danger ms-2 btn-sm mt-1" @click="handleLogout">Logout</button>
+          <button class="btn btn-outline-danger ms-2 btn-sm" @click="handleLogout">Logout</button>
         </li>
       </ul>
     </header>
