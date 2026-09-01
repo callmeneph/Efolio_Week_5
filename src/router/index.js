@@ -12,9 +12,8 @@ const routes = [
   },
   {
     path: '/about',
-    name: 'About',
-    component: AboutView,
-    meta: { requiresAuth: true }
+    name: 'about',
+    component: AboutView
   },
   {
     path: '/login',
@@ -28,10 +27,14 @@ const router = createRouter({
   routes
 })
 
-// Navigation Guard (D/HD requirement)
 router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth && !isAuthenticated.value) {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+
+  if (requiresAuth && !isAuthenticated.value) {
+
     next({ name: 'Login' })
+  } else if (to.name === 'Login' && isAuthenticated.value) {
+    next({ name: 'Home' })
   } else {
     next()
   }
