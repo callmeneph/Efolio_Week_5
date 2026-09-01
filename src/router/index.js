@@ -34,7 +34,7 @@ const router = createRouter({
   routes,
 })
 
-// Step 6 Navigation Guard for D/HD Level
+// Navigation Guard
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !isAuthenticated.value) {
     next({ name: 'Login' })
