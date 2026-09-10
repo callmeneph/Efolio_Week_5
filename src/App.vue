@@ -12,9 +12,3 @@ import BHeader from './components/BHeader.vue'
     </main>
   </div>
 </template>
-
-<style scoped>
-.main-container {
-  min-height: 100vh;
-}
-</style>

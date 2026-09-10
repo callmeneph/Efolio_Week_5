@@ -15,8 +15,7 @@ const handleLogout = () => {
     <header class="d-flex justify-content-center py-3 border-bottom">
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <!-- Changed label here -->
-          <router-link to="/" class="nav-link" active-class="active">Home</router-link>
+          <router-link to="/" class="nav-link" active-class="active">Home (Week 5)</router-link>
         </li>
         <li class="nav-item">
           <router-link to="/about" class="nav-link" active-class="active">About</router-link>
@@ -25,7 +24,7 @@ const handleLogout = () => {
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
         <li class="nav-item" v-else>
-          <button class="btn btn-outline-danger ms-2 btn-sm" @click="handleLogout">Logout</button>
+          <button class="btn btn-outline-danger ms-2 btn-sm mt-1" @click="handleLogout">Logout</button>
         </li>
       </ul>
     </header>

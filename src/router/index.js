@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import LoginView from '../views/LoginView.vue'
+import AccessDeniedView from '../views/AccessDeniedView.vue'
 import { isAuthenticated } from '../auth'
 
 const routes = [
@@ -12,13 +13,19 @@ const routes = [
   },
   {
     path: '/about',
-    name: 'about',
-    component: AboutView
+    name: 'About',
+    component: AboutView,
+    meta: { requiresAuth: true }
   },
   {
     path: '/login',
     name: 'Login',
     component: LoginView
+  },
+  {
+    path: '/access-denied',
+    name: 'AccessDenied',
+    component: AccessDeniedView
   }
 ]
 
@@ -27,14 +34,10 @@ const router = createRouter({
   routes
 })
 
+// Step 6 Navigation Guard for D/HD Level
 router.beforeEach((to, from, next) => {
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
-
-  if (requiresAuth && !isAuthenticated.value) {
-
+  if (to.meta.requiresAuth && !isAuthenticated.value) {
     next({ name: 'Login' })
-  } else if (to.name === 'Login' && isAuthenticated.value) {
-    next({ name: 'Home' })
   } else {
     next()
   }

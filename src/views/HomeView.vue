@@ -10,7 +10,7 @@ const formData = ref({
   isAustralian: false,
   reason: '',
   gender: '',
-  suburb: 'Clayton',
+  suburb: 'Clayton'
 })
 
 const submittedCards = ref([])
@@ -21,10 +21,10 @@ const errors = ref({
   confirmPassword: null,
   resident: null,
   gender: null,
-  reason: null,
+  reason: null
 })
 
-// my Validation Functions
+// Validation Functions
 const validateName = (blur) => {
   if (formData.value.username.trim().length < 3) {
     if (blur) errors.value.username = 'Name must be at least 3 characters'
@@ -97,7 +97,7 @@ const clearForm = () => {
     isAustralian: false,
     reason: '',
     gender: '',
-    suburb: 'Clayton',
+    suburb: 'Clayton'
   }
   errors.value = {
     username: null,
@@ -105,7 +105,7 @@ const clearForm = () => {
     confirmPassword: null,
     resident: null,
     gender: null,
-    reason: null,
+    reason: null
   }
 }
 </script>
@@ -166,9 +166,7 @@ const clearForm = () => {
                 v-model="formData.confirmPassword"
                 @blur="() => validateConfirmPassword(true)"
               />
-              <div v-if="errors.confirmPassword" class="text-danger small mt-1">
-                {{ errors.confirmPassword }}
-              </div>
+              <div v-if="errors.confirmPassword" class="text-danger small mt-1">{{ errors.confirmPassword }}</div>
             </div>
           </div>
 
@@ -197,18 +195,20 @@ const clearForm = () => {
               @input="() => validateReason(false)"
             ></textarea>
             <div v-if="errors.reason" class="text-danger small mt-1">{{ errors.reason }}</div>
-            <div
-              v-if="formData.reason.toLowerCase().includes('friend')"
-              class="text-success small mt-1"
-            >
+            <div v-if="formData.reason.toLowerCase().includes('friend')" class="text-success small mt-1">
               Great to have a friend
             </div>
           </div>
 
-          <!-- Row 5: Suburb -->
+          <!-- Row 5: Suburb (One-way binding demonstration) -->
           <div class="mb-3">
             <label for="suburb" class="form-label">Suburb</label>
-            <input type="text" class="form-control" id="suburb" :value="formData.suburb" />
+            <input
+              type="text"
+              class="form-control"
+              id="suburb"
+              :value="formData.suburb"
+            />
           </div>
 
           <div class="text-center mb-4">
